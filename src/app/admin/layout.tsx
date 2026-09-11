@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LayoutDashboard, Users, Calendar, Video, ShieldCheck, CreditCard, Menu } from "lucide-react";
+import { LayoutDashboard, Users, Calendar, Video, ShieldCheck, CreditCard, Menu, Coins } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +16,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           <NavItem href="/admin" icon={<LayoutDashboard size={20} />} label="Dashboard" />
           <NavItem href="/admin/members" icon={<Users size={20} />} label="Members & Subs" />
+          <NavItem href="/admin/deposits" icon={<Coins size={20} />} label="Deposits" />
           <NavItem href="/admin/schedule" icon={<Calendar size={20} />} label="Live Schedule" />
           <NavItem href="/admin/content" icon={<Video size={20} />} label="Content Library" />
           <NavItem href="/admin/cases" icon={<ShieldCheck size={20} />} label="Case Club Apps" />

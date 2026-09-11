@@ -114,5 +114,83 @@ export const setupBot = (bot: Bot) => {
 
       await ctx.reply(message, { parse_mode: "Markdown" });
     }
+    else if (data === "subscription") {
+      await ctx.answerCallbackQuery();
+      
+      let message = "⚙️ **My Subscription**\n\n";
+      
+      if (isSubscribed) {
+        const expiresAt = user?.subscription?.expiresAt;
+        const dateStr = expiresAt ? format(expiresAt, "MMM d, yyyy") : "Lifetime";
+        message += `Status: ✅ ACTIVE\nExpires: ${dateStr}\n\nThank you for being part of the INSPIRE CLUB!`;
+        
+        await ctx.reply(message, { parse_mode: "Markdown" });
+      } else {
+        message += `Status: ❌ INACTIVE\n\nUnlock exclusive masterclasses, networking, and expert sessions for just $50/month.`;
+        
+        const subKeyboard = new InlineKeyboard()
+          .text("💸 Deposit Now (TRC20)", "deposit_now");
+          
+        await ctx.reply(message, { parse_mode: "Markdown", reply_markup: subKeyboard });
+      }
+    }
+    
+    else if (data === "deposit_now") {
+      await ctx.answerCallbackQuery();
+      
+      await prisma.user.update({
+        where: { telegramId },
+        data: { botState: "AWAITING_TXID" }
+      });
+      
+      const trc20Address = "TX1234567890abcdefghijklmnopqrstuv"; // Example address
+      
+      await ctx.reply(
+        "💸 **TRC20 Crypto Deposit**\n\n" +
+        "Please send your monthly subscription payment ($50 USD equivalent) to the following TRC20 address:\n\n" +
+        `\`${trc20Address}\`\n\n` +
+        "⚠️ **IMPORTANT**: After you have sent the transaction, please reply to this message with your **Transaction Hash (TxID)**.",
+        { parse_mode: "Markdown" }
+      );
+    }
+  });
+
+  // Handle free-form text messages (e.g. for TxID submissions)
+  bot.on("message:text", async (ctx) => {
+    const telegramId = ctx.from.id;
+    
+    const user = await prisma.user.findUnique({
+      where: { telegramId }
+    });
+    
+    if (user?.botState === "AWAITING_TXID") {
+      const txId = ctx.message.text.trim();
+      
+      if (txId.length < 10) {
+        return ctx.reply("❌ That doesn't look like a valid TxID. Please send the full Transaction Hash.");
+      }
+      
+      // Save deposit
+      await prisma.deposit.create({
+        data: {
+          userId: user.id,
+          txId: txId,
+          amount: 50,
+        }
+      });
+      
+      // Reset state
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { botState: "NONE" }
+      });
+      
+      await ctx.reply(
+        "✅ **Transaction Received!**\n\n" +
+        "Your deposit is now pending manual review by our admins. " +
+        "Once approved, your subscription will be activated automatically and you'll receive an invite to the private Supergroup!",
+        { parse_mode: "Markdown" }
+      );
+    }
   });
 };

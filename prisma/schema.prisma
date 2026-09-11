@@ -14,8 +14,10 @@ model User {
   firstName       String?
   lastName        String?
   role            String           @default("USER")
+  botState        String?          @default("NONE") // Tracks conversation state (e.g., AWAITING_TXID)
   subscription    Subscription?
   caseSubmissions CaseSubmission[]
+  deposits        Deposit[]
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
 }
@@ -25,11 +27,20 @@ model Subscription {
   userId               String             @unique
   user                 User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   status               String             @default("INACTIVE")
-  stripeCustomerId     String?
-  stripeSubscriptionId String?
   expiresAt            DateTime?
   createdAt            DateTime           @default(now())
   updatedAt            DateTime           @updatedAt
+}
+
+model Deposit {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount    Float    @default(0)
+  txId      String
+  status    String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Content {
