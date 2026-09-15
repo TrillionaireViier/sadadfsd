@@ -15,20 +15,24 @@ export const setupBot = (bot: Bot) => {
   bot.command("start", async (ctx) => {
     // Add user to database if they don't exist
     if (ctx.from) {
-      await prisma.user.upsert({
-        where: { telegramId: ctx.from.id },
-        update: {
-          username: ctx.from.username,
-          firstName: ctx.from.first_name,
-          lastName: ctx.from.last_name,
-        },
-        create: {
-          telegramId: ctx.from.id,
-          username: ctx.from.username,
-          firstName: ctx.from.first_name,
-          lastName: ctx.from.last_name,
-        }
-      });
+      try {
+        await prisma.user.upsert({
+          where: { telegramId: ctx.from.id },
+          update: {
+            username: ctx.from.username,
+            firstName: ctx.from.first_name,
+            lastName: ctx.from.last_name,
+          },
+          create: {
+            telegramId: ctx.from.id,
+            username: ctx.from.username,
+            firstName: ctx.from.first_name,
+            lastName: ctx.from.last_name,
+          }
+        });
+      } catch (e) {
+        console.error("Prisma write error (likely read-only on Vercel):", e);
+      }
     }
 
     const keyboard = new InlineKeyboard()
@@ -50,11 +54,16 @@ export const setupBot = (bot: Bot) => {
     const data = ctx.callbackQuery.data;
     const telegramId = ctx.from.id;
 
-    // Fetch user with subscription
-    const user = await prisma.user.findUnique({
-      where: { telegramId },
-      include: { subscription: true }
-    });
+    let user = null;
+    try {
+      // Fetch user with subscription
+      user = await prisma.user.findUnique({
+        where: { telegramId },
+        include: { subscription: true }
+      });
+    } catch (e) {
+      console.error("Prisma read error:", e);
+    }
 
     const isSubscribed = user?.subscription?.status === "ACTIVE";
 
