@@ -1,8 +1,21 @@
 
-> inspire-club-tg@0.1.0 start
-> next start
+> inspire-club-tg@0.1.0 dev:all
+> concurrently "npm run dev" "node scripts/set-webhook.js"
 
-▲ Next.js 16.3.4
-- Local:         http://localhost:3000
-- Network:       http://192.168.0.4:3000
-✓ Ready in 230ms
+[1] ◇ injected env (2) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[1] Starting localtunnel on port 3000...
+[0] 
+[0] > inspire-club-tg@0.1.0 dev
+[0] > next dev
+[0] 
+[0] ▲ Next.js 16.3.4 (Turbopack)
+[0] - Local:         http://localhost:3000
+[0] - Network:       http://192.168.0.4:3000
+[0] - Environments: .env
+[0] ✓ Ready in 746ms
+[0] npm run dev exited with code 0
+[1] Tunnel is open at: https://bumpy-hairs-leave.loca.lt
+[1] Setting webhook to: https://bumpy-hairs-leave.loca.lt/api/webhook/telegram
+[1] Telegram API Response: {"ok":true,"result":true,"description":"Webhook was set"}
+[1] Keep this process running to keep the tunnel open!
+[1] node scripts/set-webhook.js exited with code 0

@@ -18,7 +18,7 @@ export function DepositActionButtons({ depositId, userId }: { depositId: string,
       <button 
         disabled={isPending}
         onClick={() => startTransition(() => approveDeposit(depositId, userId))}
-        className="px-3 py-1.5 text-xs font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors disabled:opacity-50"
+        className="px-3 py-1.5 text-xs font-medium text-white bg-yellow-600 hover:bg-yellow-700 rounded-lg transition-colors disabled:opacity-50"
       >
         Approve
       </button>

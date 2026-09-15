@@ -17,15 +17,15 @@ export default async function DepositsPage() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Crypto Deposits</h1>
-          <p className="text-slate-500 mt-1">Review TRC20 transactions manually to activate subscriptions.</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Crypto Deposits</h1>
+          <p className="text-slate-400 mt-1">Review TRC20 transactions manually to activate subscriptions.</p>
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-slate-500">
-            <thead className="text-xs text-slate-700 uppercase bg-slate-50 border-b border-slate-200">
+          <table className="w-full text-left text-sm text-slate-400">
+            <thead className="text-xs text-slate-200 uppercase bg-slate-950 border-b border-slate-800">
               <tr>
                 <th className="px-6 py-4">User</th>
                 <th className="px-6 py-4">TxID / Hash</th>
@@ -43,9 +43,9 @@ export default async function DepositsPage() {
                 </tr>
               ) : (
                 deposits.map((deposit) => (
-                  <tr key={deposit.id} className="bg-white border-b border-slate-100 hover:bg-slate-50">
-                    <td className="px-6 py-4 font-medium text-slate-900 flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold">
+                  <tr key={deposit.id} className="bg-slate-900 border-b border-slate-800 hover:bg-slate-950">
+                    <td className="px-6 py-4 font-medium text-white flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-700 font-bold">
                         {deposit.user?.firstName?.[0] || deposit.user?.username?.[0] || "U"}
                       </div>
                       <div>
@@ -58,7 +58,7 @@ export default async function DepositsPage() {
                     <td className="px-6 py-4 font-mono text-xs max-w-[200px] truncate">{deposit.txId}</td>
                     <td className="px-6 py-4">
                       {deposit.status === "PENDING" && <span className="bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><Clock size={12}/> Pending</span>}
-                      {deposit.status === "APPROVED" && <span className="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><CheckCircle size={12}/> Approved</span>}
+                      {deposit.status === "APPROVED" && <span className="bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><CheckCircle size={12}/> Approved</span>}
                       {deposit.status === "REJECTED" && <span className="bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><XCircle size={12}/> Rejected</span>}
                     </td>
                     <td className="px-6 py-4">{format(deposit.createdAt, "MMM d, yyyy h:mm a")}</td>

@@ -16,41 +16,41 @@ export function AddScheduleForm() {
       className="space-y-4"
     >
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">Session Title</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Session Title</label>
         <input 
           type="text" 
           name="title" 
           required 
-          className="w-full border border-slate-200 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
           placeholder="e.g. Q&A with John Doe"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">Date & Time</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Date & Time</label>
         <input 
           type="datetime-local" 
           name="scheduledFor" 
           required 
-          className="w-full border border-slate-200 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Description</label>
         <textarea 
           name="description" 
-          className="w-full border border-slate-200 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 min-h-[80px]"
+          className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 min-h-[80px]"
           placeholder="Brief description of the session..."
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-1">Stream / Zoom Link</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Stream / Zoom Link</label>
         <input 
           type="url" 
           name="url" 
-          className="w-full border border-slate-200 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
           placeholder="https://zoom.us/..."
         />
       </div>

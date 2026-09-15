@@ -16,15 +16,15 @@ export default async function MembersPage() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Members & Subscriptions</h1>
-          <p className="text-slate-500 mt-1">Manage club members, their status, and Telegram profiles.</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Members & Subscriptions</h1>
+          <p className="text-slate-400 mt-1">Manage club members, their status, and Telegram profiles.</p>
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-slate-500">
-            <thead className="text-xs text-slate-700 uppercase bg-slate-50 border-b border-slate-200">
+          <table className="w-full text-left text-sm text-slate-400">
+            <thead className="text-xs text-slate-200 uppercase bg-slate-950 border-b border-slate-800">
               <tr>
                 <th className="px-6 py-4">User</th>
                 <th className="px-6 py-4">Telegram ID</th>
@@ -42,9 +42,9 @@ export default async function MembersPage() {
                 </tr>
               ) : (
                 users.map((user) => (
-                  <tr key={user.id} className="bg-white border-b border-slate-100 hover:bg-slate-50">
-                    <td className="px-6 py-4 font-medium text-slate-900 flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold">
+                  <tr key={user.id} className="bg-slate-900 border-b border-slate-800 hover:bg-slate-950">
+                    <td className="px-6 py-4 font-medium text-white flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-700 font-bold">
                         {user.firstName?.[0] || user.username?.[0] || "U"}
                       </div>
                       <div>
@@ -57,14 +57,14 @@ export default async function MembersPage() {
                     <td className="px-6 py-4 font-mono text-xs">{user.telegramId.toString()}</td>
                     <td className="px-6 py-4">
                       {user.subscription?.status === "ACTIVE" ? (
-                        <span className="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full text-xs font-semibold">Active</span>
+                        <span className="bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-full text-xs font-semibold">Active</span>
                       ) : (
-                        <span className="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full text-xs font-semibold">Inactive</span>
+                        <span className="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full text-xs font-semibold">Inactive</span>
                       )}
                     </td>
                     <td className="px-6 py-4">{format(user.createdAt, "MMM d, yyyy")}</td>
                     <td className="px-6 py-4 text-right">
-                      <button className="text-indigo-600 hover:text-indigo-900 font-medium">Manage</button>
+                      <button className="text-pink-600 hover:text-pink-900 font-medium">Manage</button>
                     </td>
                   </tr>
                 ))
