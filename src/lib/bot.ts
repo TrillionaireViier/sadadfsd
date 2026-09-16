@@ -43,9 +43,14 @@ export const setupBot = (bot: Bot) => {
       .text("⚙️ My Subscription", "subscription");
 
     await ctx.reply(
-      "Welcome to INSPIRE CLUB! 🌟\n\n" +
-      "Your premium gateway to exclusive masterclasses, networking, and expert sessions.\n\n" +
-      "Use the menu below to navigate.",
+      "Вітаємо в INSIDE CLUB by INSPIRE 🤍\n\n" +
+      "Ти всередині простору, створеного для творців сфери краси.\n\n" +
+      "Тут ми зібрали знання, досвід, сильне оточення та можливості, які допомагають не просто ставати кращим у своїй професії , а рости у доході, масштабі та власному рівні.\n\n" +
+      "INSIDE - це місце, де можна знайти потрібних людей, отримати відповідь на свій запит, побачити нові точки росту, навчатися у сильних і бути частиною середовища, яке рухається вперед.\n\n" +
+      "Тут важливо не просто дивитися.\n" +
+      "Знайомся. Запитуй. Ділись. Використовуй можливості.\n\n" +
+      "Ти вже INSIDE.\n\n" +
+      "Твій професійний LEVEL ↑",
       { reply_markup: keyboard }
     );
   });
