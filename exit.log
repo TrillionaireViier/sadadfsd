@@ -1,0 +1,14 @@
+▲ Next.js 16.3.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.4:3000
+- Environments: .env
+✓ Ready in 731ms
+(node:8049) WARNING: Exited the environment with code 0
+    at #processReallyExit (/usr/local/lib/node_modules/npm/node_modules/signal-exit/dist/cjs/index.js:228:48)
+    at #process.reallyExit (/usr/local/lib/node_modules/npm/node_modules/signal-exit/dist/cjs/index.js:194:43)
+    at exit (node:internal/process/per_thread:241:13)
+    at /usr/local/lib/node_modules/npm/lib/cli/exit-handler.js:163:21
+    at afterWrite (node:internal/streams/writable:708:5)
+    at afterWriteTick (node:internal/streams/writable:694:10)
+    at processTicksAndRejections (node:internal/process/task_queues:89:21)
+

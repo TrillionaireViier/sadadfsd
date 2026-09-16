@@ -33,6 +33,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-slate-300">Admin User</span>
             <div className="w-8 h-8 rounded-full bg-slate-700"></div>
+            <form action={async () => {
+              "use server";
+              const { logoutAction } = await import("./login/actions");
+              await logoutAction();
+            }}>
+              <button type="submit" className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded border border-slate-700 transition-colors ml-2">
+                Вийти
+              </button>
+            </form>
           </div>
         </header>
         <div className="p-6 md:p-8 flex-1 overflow-y-auto">
