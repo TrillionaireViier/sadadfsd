@@ -13,7 +13,7 @@ export async function loginAction(prevState: any, formData: FormData) {
       maxAge: 60 * 60 * 24 * 30, // 30 days
     });
     
-    redirect("/admin");
+    return { success: true };
   }
   
   return { error: "Неправильний пароль. Спробуйте ще раз." };
