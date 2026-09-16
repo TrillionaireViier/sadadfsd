@@ -63,7 +63,7 @@ export default function AdminLogin() {
 
         <div className="mt-8 pt-6 border-t border-slate-800/50 text-center">
           <p className="text-xs text-slate-500">
-            Підказка: пароль <span className="font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">INSPIRE2026</span>
+            Підказка: пароль <span className="font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">12345</span>
           </p>
         </div>
       </div>
