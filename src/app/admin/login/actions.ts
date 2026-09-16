@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function loginAction(prevState: any, formData: FormData) {
-  const password = formData.get("password");
+  const password = formData.get("password")?.toString().trim().toUpperCase();
   
   if (password === "INSPIRE2026") {
     const cookieStore = await cookies();
