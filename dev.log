@@ -1,9 +1,5 @@
 
 > inspire-club-tg@0.1.0 dev
-> next dev
+> next dev 4000
 
-▲ Next.js 16.3.4 (Turbopack)
-- Local:         http://localhost:3000
-- Network:       http://192.0.0.2:3000
-- Environments: .env
-✓ Ready in 623ms
+Invalid project directory provided, no such directory: /Users/danilavier/.gemini/antigravity-ide/scratch/inspire-club-tg/4000
