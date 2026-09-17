@@ -19,16 +19,23 @@ export default function AdminLogin() {
     setLoading(true);
     setError("");
 
-    if (password.trim() === "admin123") {
-      document.cookie = "auth_role=admin; path=/; max-age=2592000";
-      if (nickname.trim()) document.cookie = `auth_nickname=${encodeURIComponent(nickname.trim())}; path=/; max-age=2592000`;
-      router.push("/admin");
-    } else if (password.trim() === "user123") {
-      document.cookie = "auth_role=user; path=/; max-age=2592000";
-      if (nickname.trim()) document.cookie = `auth_nickname=${encodeURIComponent(nickname.trim())}; path=/; max-age=2592000`;
+    const USERS = [
+      { nickname: "Данило", password: "111", role: "admin" },
+      { nickname: "Саша", password: "222", role: "admin" },
+    ];
+
+    const user = USERS.find(
+      (u) =>
+        u.nickname.toLowerCase() === nickname.trim().toLowerCase() &&
+        u.password === password.trim()
+    );
+
+    if (user) {
+      document.cookie = `auth_role=${user.role}; path=/; max-age=2592000`;
+      document.cookie = `auth_nickname=${encodeURIComponent(user.nickname)}; path=/; max-age=2592000`;
       router.push("/admin");
     } else {
-      setError("Невірний пароль. Спробуйте ще раз.");
+      setError("Невірний нікнейм або пароль.");
       setLoading(false);
     }
   };
