@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { LayoutDashboard, Users, Calendar, Video, ShieldCheck, CreditCard, Menu, Coins } from "lucide-react";
+import { cookies } from "next/headers";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = cookies();
+  const role = cookieStore.get("auth_role")?.value;
+  const isAdmin = role === "admin";
   return (
     <div className="min-h-screen bg-slate-950 flex">
       {/* Sidebar */}
@@ -15,11 +19,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           <NavItem href="/admin" icon={<LayoutDashboard size={20} />} label="Дашборд" />
-          <NavItem href="/admin/members" icon={<Users size={20} />} label="Учасники та підписки" />
-          <NavItem href="/admin/deposits" icon={<Coins size={20} />} label="Поповнення" />
+          {isAdmin && (
+            <>
+              <NavItem href="/admin/members" icon={<Users size={20} />} label="Учасники та підписки" />
+              <NavItem href="/admin/deposits" icon={<Coins size={20} />} label="Поповнення" />
+            </>
+          )}
           <NavItem href="/admin/schedule" icon={<Calendar size={20} />} label="Розклад трансляцій" />
           <NavItem href="/admin/content" icon={<Video size={20} />} label="Бібліотека контенту" />
-          <NavItem href="/admin/cases" icon={<ShieldCheck size={20} />} label="Заявки на розбір" />
+          {isAdmin && (
+            <NavItem href="/admin/cases" icon={<ShieldCheck size={20} />} label="Заявки на розбір" />
+          )}
           <NavItem href="/admin/perks" icon={<CreditCard size={20} />} label="Бонуси від партнерів" />
         </nav>
       </aside>
@@ -31,7 +41,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Menu size={24} />
           </button>
           <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-slate-300">Адміністратор</span>
+            <span className="text-sm font-medium text-slate-300">
+              {isAdmin ? "Адміністратор" : "Учасник клубу"}
+            </span>
             <div className="w-8 h-8 rounded-full bg-slate-700"></div>
             <form action={async () => {
               "use server";

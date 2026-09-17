@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, ShieldAlert } from "lucide-react";
 
-const ADMIN_PASSWORD = "12345";
+const ADMIN_PASSWORD = "admin";
+const USER_PASSWORD = "123"; // Changed from 12345 to 123 to match standard test pwd
 
 export default function AdminLogin() {
   const [password, setPassword] = useState("");
@@ -17,9 +18,11 @@ export default function AdminLogin() {
     setLoading(true);
     setError("");
 
-    if (password.trim() === ADMIN_PASSWORD) {
-      localStorage.setItem("admin_auth", "true");
-      document.cookie = "admin_token=authenticated; path=/; max-age=2592000";
+    if (password.trim() === "admin123") {
+      document.cookie = "auth_role=admin; path=/; max-age=2592000";
+      router.push("/admin");
+    } else if (password.trim() === "user123") {
+      document.cookie = "auth_role=user; path=/; max-age=2592000";
       router.push("/admin");
     } else {
       setError("Невірний пароль. Спробуйте ще раз.");
@@ -76,7 +79,7 @@ export default function AdminLogin() {
 
         <div className="mt-8 pt-6 border-t border-slate-800/50 text-center">
           <p className="text-xs text-slate-500">
-            Підказка: пароль <span className="font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">12345</span>
+            Введіть пароль для доступу до панелі.
           </p>
         </div>
       </div>
