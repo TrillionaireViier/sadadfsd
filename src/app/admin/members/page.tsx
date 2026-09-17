@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import { Users, Mail, ShieldAlert } from "lucide-react";
 import { format } from "date-fns";
+import { DeleteMemberButton } from "./DeleteMemberButton";
 
 export const dynamic = "force-dynamic";
 
@@ -63,8 +64,8 @@ export default async function MembersPage() {
                       )}
                     </td>
                     <td className="px-6 py-4">{format(user.createdAt, "MMM d, yyyy")}</td>
-                    <td className="px-6 py-4 text-right">
-                      <button className="text-pink-600 hover:text-pink-900 font-medium">Керувати</button>
+                    <td className="px-6 py-4 text-right flex justify-end">
+                      <DeleteMemberButton userId={user.id} />
                     </td>
                   </tr>
                 ))
