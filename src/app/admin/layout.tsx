@@ -2,8 +2,8 @@ import Link from "next/link";
 import { LayoutDashboard, Users, Calendar, Video, ShieldCheck, CreditCard, Menu, Coins } from "lucide-react";
 import { cookies } from "next/headers";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = cookies();
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
   const role = cookieStore.get("auth_role")?.value;
   const isAdmin = role === "admin";
   return (
