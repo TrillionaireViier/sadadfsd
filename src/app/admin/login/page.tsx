@@ -8,6 +8,7 @@ const ADMIN_PASSWORD = "admin";
 const USER_PASSWORD = "123"; // Changed from 12345 to 123 to match standard test pwd
 
 export default function AdminLogin() {
+  const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,9 +21,11 @@ export default function AdminLogin() {
 
     if (password.trim() === "admin123") {
       document.cookie = "auth_role=admin; path=/; max-age=2592000";
+      if (nickname.trim()) document.cookie = `auth_nickname=${encodeURIComponent(nickname.trim())}; path=/; max-age=2592000`;
       router.push("/admin");
     } else if (password.trim() === "user123") {
       document.cookie = "auth_role=user; path=/; max-age=2592000";
+      if (nickname.trim()) document.cookie = `auth_nickname=${encodeURIComponent(nickname.trim())}; path=/; max-age=2592000`;
       router.push("/admin");
     } else {
       setError("Невірний пароль. Спробуйте ще раз.");
@@ -42,13 +45,23 @@ export default function AdminLogin() {
         </div>
 
         <h1 className="text-2xl font-bold text-white text-center mb-2 tracking-tight">
-          Вхід в адмін-панель
+          Вхід в кабінет клубу
         </h1>
         <p className="text-slate-400 text-center mb-8 text-sm">
-          Будь ласка, введіть пароль адміністратора для продовження.
+          Будь ласка, введіть ваш нікнейм та пароль для доступу.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4 relative">
+          <div>
+            <input
+              type="text"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              required
+              placeholder="Ваш нікнейм (Telegram або ім'я)..."
+              className="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all placeholder:text-slate-600 mb-4"
+            />
+          </div>
           <div>
             <input
               type="password"

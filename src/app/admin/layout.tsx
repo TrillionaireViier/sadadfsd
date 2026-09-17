@@ -5,7 +5,11 @@ import { cookies } from "next/headers";
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
   const role = cookieStore.get("auth_role")?.value;
+  const nickname = cookieStore.get("auth_nickname")?.value;
   const isAdmin = role === "admin";
+  
+  const displayName = nickname ? decodeURIComponent(nickname) : (isAdmin ? "Адміністратор" : "Учасник клубу");
+
   return (
     <div className="min-h-screen bg-slate-950 flex">
       {/* Sidebar */}
@@ -42,7 +46,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </button>
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-slate-300">
-              {isAdmin ? "Адміністратор" : "Учасник клубу"}
+              {displayName}
             </span>
             <div className="w-8 h-8 rounded-full bg-slate-700"></div>
             <form action={async () => {

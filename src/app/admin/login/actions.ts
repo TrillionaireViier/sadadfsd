@@ -22,5 +22,6 @@ export async function loginAction(prevState: any, formData: FormData) {
 export async function logoutAction() {
   const cookieStore = await cookies();
   cookieStore.delete("auth_role");
+  cookieStore.delete("auth_nickname");
   redirect("/admin/login");
 }
