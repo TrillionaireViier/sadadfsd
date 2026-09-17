@@ -22,6 +22,7 @@ export default function AdminLogin() {
     const USERS = [
       { nickname: "Данило", password: "111", role: "admin" },
       { nickname: "Саша", password: "222", role: "admin" },
+      { nickname: "Юзер", password: "333", role: "user" },
     ];
 
     const user = USERS.find(
