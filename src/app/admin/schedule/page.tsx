@@ -17,17 +17,17 @@ export default async function SchedulePage() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Live Schedule</h1>
-          <p className="text-slate-400 mt-1">Manage upcoming live sessions, masterclasses, and Q&As.</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Розклад трансляцій</h1>
+          <p className="text-slate-400 mt-1">Керування майбутніми прямими ефірами, майстер-класами та Q&A.</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
-          <h2 className="text-lg font-bold text-white">Upcoming Sessions</h2>
+          <h2 className="text-lg font-bold text-white">Майбутні трансляції</h2>
           {sessions.length === 0 ? (
             <div className="bg-slate-900 border border-slate-800 rounded-xl p-8 text-center text-slate-400">
-              No live sessions scheduled. Plan your next event!
+              Немає запланованих трансляцій. Заплануйте нову подію!
             </div>
           ) : (
             sessions.map((session) => (
@@ -48,7 +48,7 @@ export default async function SchedulePage() {
                   
                   {session.url && (
                     <a href={session.url} target="_blank" rel="noreferrer" className="text-sm bg-pink-50 text-pink-700 font-medium px-3 py-1.5 rounded-lg hover:bg-pink-100 mt-4 inline-block transition-colors">
-                      Join Stream URL &rarr;
+                      Приєднатися до трансляції &rarr;
                     </a>
                   )}
                 </div>
@@ -59,7 +59,7 @@ export default async function SchedulePage() {
 
         <div>
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm sticky top-6">
-            <h2 className="text-lg font-bold text-white mb-4">Schedule New Session</h2>
+            <h2 className="text-lg font-bold text-white mb-4">Запланувати трансляцію</h2>
             <AddScheduleForm />
           </div>
         </div>

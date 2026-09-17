@@ -16,18 +16,18 @@ export function AddScheduleForm() {
       className="space-y-4"
     >
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Session Title</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Назва трансляції</label>
         <input 
           type="text" 
           name="title" 
           required 
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
-          placeholder="e.g. Q&A with John Doe"
+          placeholder="напр. Q&A з експертом"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Date & Time</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Дата та час</label>
         <input 
           type="datetime-local" 
           name="scheduledFor" 
@@ -37,16 +37,16 @@ export function AddScheduleForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Description</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Опис</label>
         <textarea 
           name="description" 
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 min-h-[80px]"
-          placeholder="Brief description of the session..."
+          placeholder="Короткий опис трансляції..."
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Stream / Zoom Link</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Посилання (Stream / Zoom)</label>
         <input 
           type="url" 
           name="url" 
@@ -59,7 +59,7 @@ export function AddScheduleForm() {
         type="submit" 
         className="w-full bg-rose-600 hover:bg-rose-700 text-white font-medium p-2.5 rounded-lg transition-colors flex justify-center items-center gap-2"
       >
-        Schedule Session
+        Запланувати
       </button>
     </form>
   );

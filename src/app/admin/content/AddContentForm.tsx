@@ -16,39 +16,39 @@ export function AddContentForm() {
       className="space-y-4"
     >
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Title</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Назва</label>
         <input 
           type="text" 
           name="title" 
           required 
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
-          placeholder="e.g. Masterclass: Color Theory"
+          placeholder="напр. Майстер-клас: Теорія кольору"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Type</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Тип</label>
         <select 
           name="type" 
           required
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
         >
-          <option value="VIDEO_RECORDING">Video Recording</option>
-          <option value="PDF_MATERIAL">PDF Material</option>
+          <option value="VIDEO_RECORDING">Відеозапис</option>
+          <option value="PDF_MATERIAL">PDF Матеріал</option>
         </select>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Description</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Опис</label>
         <textarea 
           name="description" 
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 min-h-[80px]"
-          placeholder="Brief description of the content..."
+          placeholder="Короткий опис контенту..."
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">URL (Link to Video/PDF)</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Посилання (URL на Відео/PDF)</label>
         <input 
           type="url" 
           name="url" 
@@ -61,7 +61,7 @@ export function AddContentForm() {
         type="submit" 
         className="w-full bg-pink-600 hover:bg-pink-700 text-white font-medium p-2.5 rounded-lg transition-colors flex justify-center items-center gap-2"
       >
-        Save Content
+        Зберегти контент
       </button>
     </form>
   );

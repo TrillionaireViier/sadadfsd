@@ -17,8 +17,8 @@ export default async function DepositsPage() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Crypto Deposits</h1>
-          <p className="text-slate-400 mt-1">Review TRC20 transactions manually to activate subscriptions.</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Поповнення криптою</h1>
+          <p className="text-slate-400 mt-1">Перевірка транзакцій TRC20 вручну для активації підписок.</p>
         </div>
       </div>
 
@@ -27,18 +27,18 @@ export default async function DepositsPage() {
           <table className="w-full text-left text-sm text-slate-400">
             <thead className="text-xs text-slate-200 uppercase bg-slate-950 border-b border-slate-800">
               <tr>
-                <th className="px-6 py-4">User</th>
-                <th className="px-6 py-4">TxID / Hash</th>
-                <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4">Date</th>
-                <th className="px-6 py-4 text-right">Actions</th>
+                <th className="px-6 py-4">Користувач</th>
+                <th className="px-6 py-4">TxID / Хеш</th>
+                <th className="px-6 py-4">Статус</th>
+                <th className="px-6 py-4">Дата</th>
+                <th className="px-6 py-4 text-right">Дії</th>
               </tr>
             </thead>
             <tbody>
               {deposits.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-8 text-center">
-                    No deposits found.
+                    Не знайдено жодного поповнення.
                   </td>
                 </tr>
               ) : (
@@ -51,15 +51,15 @@ export default async function DepositsPage() {
                       <div>
                         {deposit.user?.firstName} {deposit.user?.lastName}
                         <div className="text-xs text-slate-400 font-normal">
-                          {deposit.user?.username ? `@${deposit.user.username}` : "No username"}
+                          {deposit.user?.username ? `@${deposit.user.username}` : "Немає юзернейму"}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 font-mono text-xs max-w-[200px] truncate">{deposit.txId}</td>
                     <td className="px-6 py-4">
-                      {deposit.status === "PENDING" && <span className="bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><Clock size={12}/> Pending</span>}
-                      {deposit.status === "APPROVED" && <span className="bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><CheckCircle size={12}/> Approved</span>}
-                      {deposit.status === "REJECTED" && <span className="bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><XCircle size={12}/> Rejected</span>}
+                      {deposit.status === "PENDING" && <span className="bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><Clock size={12}/> Очікує</span>}
+                      {deposit.status === "APPROVED" && <span className="bg-yellow-100 text-yellow-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><CheckCircle size={12}/> Схвалено</span>}
+                      {deposit.status === "REJECTED" && <span className="bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-1"><XCircle size={12}/> Відхилено</span>}
                     </td>
                     <td className="px-6 py-4">{format(deposit.createdAt, "MMM d, yyyy h:mm a")}</td>
                     <td className="px-6 py-4 text-right">
