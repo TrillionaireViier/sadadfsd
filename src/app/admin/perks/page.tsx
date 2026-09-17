@@ -13,17 +13,17 @@ export default async function PerksPage() {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">Partner Perks</h1>
-          <p className="text-slate-400 mt-1">Manage discount codes and special offers for club members.</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Бонуси від партнерів</h1>
+          <p className="text-slate-400 mt-1">Управління промокодами та спеціальними пропозиціями для учасників клубу.</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
-          <h2 className="text-lg font-bold text-white">Current Perks</h2>
+          <h2 className="text-lg font-bold text-white">Актуальні бонуси</h2>
           {perks.length === 0 ? (
             <div className="bg-slate-900 border border-slate-800 rounded-xl p-8 text-center text-slate-400">
-              No partner perks added yet.
+              Ще не додано жодного бонусу.
             </div>
           ) : (
             perks.map((perk) => (
@@ -45,7 +45,7 @@ export default async function PerksPage() {
                   {perk.url && (
                     <div className="mt-3">
                       <a href={perk.url} target="_blank" rel="noreferrer" className="text-sm text-yellow-600 hover:underline">
-                        Visit Partner Site &rarr;
+                        Перейти на сайт партнера &rarr;
                       </a>
                     </div>
                   )}
@@ -57,7 +57,7 @@ export default async function PerksPage() {
 
         <div>
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm sticky top-6">
-            <h2 className="text-lg font-bold text-white mb-4">Add New Perk</h2>
+            <h2 className="text-lg font-bold text-white mb-4">Додати новий бонус</h2>
             <AddPerkForm />
           </div>
         </div>

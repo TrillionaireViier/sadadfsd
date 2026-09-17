@@ -16,38 +16,38 @@ export function AddPerkForm() {
       className="space-y-4"
     >
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Partner/Brand Name</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Назва партнера / бренду</label>
         <input 
           type="text" 
           name="title" 
           required 
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
-          placeholder="e.g. Dyson Pro"
+          placeholder="напр. Dyson Pro"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Description</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Опис</label>
         <textarea 
           name="description" 
           required
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 min-h-[80px]"
-          placeholder="What is the discount or offer?"
+          placeholder="В чому полягає знижка або пропозиція?"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Promo Code (Optional)</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Промокод (необов'язково)</label>
         <input 
           type="text" 
           name="discountCode" 
           className="w-full border border-slate-800 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 font-mono"
-          placeholder="e.g. INSPIRE20"
+          placeholder="напр. INSPIRE20"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-200 mb-1">Brand URL (Optional)</label>
+        <label className="block text-sm font-medium text-slate-200 mb-1">Посилання на сайт (необов'язково)</label>
         <input 
           type="url" 
           name="url" 
@@ -60,7 +60,7 @@ export function AddPerkForm() {
         type="submit" 
         className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium p-2.5 rounded-lg transition-colors flex justify-center items-center gap-2"
       >
-        Add Partner Perk
+        Додати бонус
       </button>
     </form>
   );
