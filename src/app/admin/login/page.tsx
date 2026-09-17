@@ -21,7 +21,7 @@ export default function AdminLogin() {
 
     const USERS = [
       { nickname: "Данило", password: "D@n!L0_Insp1re_2026!", role: "admin" },
-      { nickname: "Саша", password: "S@shA_CluB_2026$", role: "admin" },
+      { nickname: "Саша", password: "x9Y!q#P2$mR8*vK5", role: "admin" },
       { nickname: "Юзер", password: "333", role: "user" },
     ];
 
