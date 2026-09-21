@@ -2,7 +2,7 @@ import { Bot, webhookCallback, InlineKeyboard } from "grammy";
 import prisma from "./prisma";
 import { format } from "date-fns";
 
-const token = process.env.TELEGRAM_BOT_TOKEN || "6176982344:AAE7oB7Fj6ti7z1aDaCMoIMKQQtZHYjIYb8";
+const token = process.env.TELEGRAM_BOT_TOKEN;
 
 export const getBot = () => {
   if (!token) {
